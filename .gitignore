@@ -54,3 +54,10 @@ target/
 
 # Virtualenv
 venv/
+flask/
+
+# OSX
+.DS_Store
+
+# Yeoman/NodeJS
+node_modules/
