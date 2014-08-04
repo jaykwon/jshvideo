@@ -11,13 +11,14 @@ from pprint import pprint
 print "Writing data to", sys.argv[1]
 files = glob.glob(app.config['VIDEOS_DIRECTORY'] + '/*.*')
 print "Processing:"
-results = {}
-for file in files:
+results = []
+for idx, file in enumerate(files):
     print " ->", file
     base = os.path.basename(file)
     info = json.loads(extract_json(file))
     info['filename'] = file
     info['basename'] = base
-    results[base] = info
+    info['title'] = base.split('.')[0].upper().replace('_', ' ')
+    results.append(info)
 with open(sys.argv[1], 'w') as outfile:
     json.dump(results, outfile, indent=4)
