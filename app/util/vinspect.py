@@ -2,7 +2,12 @@ from hachoir_core.error import HachoirError
 from hachoir_core.cmd_line import unicodeFilename
 from hachoir_metadata import extractMetadata
 from hachoir_parser import createParser
+from ffvideo import VideoStream
 import json
+import os.path
+import sys
+sys.path.append(os.path.abspath(os.path.dirname('..')))
+import config
 
 
 VIDEO_PATH = 'app/static/media/videos/flame.avi'
@@ -59,6 +64,11 @@ def extract_json(filename, **kwargs):
     d['duration']['alt'] = bt
     d['duration']['raw'] = str(d['duration']['raw'])
     return json.dumps(d, **kwargs)
+
+def get_frame(filename, sec=2):
+    vs = VideoStream(filename)
+    frame = vs.get_frame_at_sec(sec)
+    frame.image().save(os.path.join(config.FRAMES_DIRECTORY, 'test.png'))
 
 if __name__ == '__main__':
     metadata = extract(VIDEO_PATH)
