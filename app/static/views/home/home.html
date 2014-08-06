@@ -3,18 +3,18 @@
 </div>
 <hr />
 <div>
-    <div ng-repeat="video in videos">
+    <div ng-repeat="video in videos | filter:query">
         <span class="nine columns alpha omega"><h4>{{ video.title }}</h4></span>
         <div class="three columns alpha">
             <img ng-src="{{ video.static_frame }}" class="thumbnail" />
         </div>
         <div class="six columns omega">
-            <span class="nine columns alpha omega">{{ video.text }}</span>
             <em>
                 <span class="two columns alpha small">{{ video.duration.raw }}</span>
                 <span class="two columns small">{{ video.width.raw }}x{{ video.height.raw }}</span>
                 <span class="two columns omega small">{{ video.basename }}</span>
             </em>
+            <span class="nine columns alpha omega">{{ video.text }}</span>
         </div>
     </div>
 </div>
