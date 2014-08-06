@@ -4,17 +4,15 @@ from hachoir_metadata import extractMetadata
 from hachoir_parser import createParser
 from ffvideo import VideoStream
 import json
+import datetime
 import os.path
 import sys
 sys.path.append(os.path.abspath(os.path.dirname('..')))
 import config
 
 
-VIDEO_PATH = 'app/static/media/videos/flame.avi'
-
-
 def _create_parser(filename):
-    filename, realname = unicodeFilename(VIDEO_PATH), filename
+    filename, realname = unicodeFilename(filename), filename
     parser = createParser(filename, realname)
     return parser
 
@@ -29,7 +27,7 @@ def pretty_time(bt):
     return pt
 
 def extract(filename):
-    parser = _create_parser(VIDEO_PATH)
+    parser = _create_parser(filename)
     try:
         metadata = extractMetadata(parser)
     except HachoirError, e:
@@ -45,6 +43,9 @@ def make_hm_dict(metadata):
             raw = metadata.get(key)
         except ValueError, e:
             continue
+        #datetime.datetime objects won't serialize correctly
+        if type(raw) is datetime.datetime:
+            raw = None
         result[key] = {
             'raw': raw,
             'text': text
@@ -65,13 +66,18 @@ def extract_json(filename, **kwargs):
     d['duration']['raw'] = str(d['duration']['raw'])
     return json.dumps(d, **kwargs)
 
-def get_frame(filename, sec=2):
+def get_frame(filename, sec=3):
+    basename = os.path.basename(filename)
+    sans_ext = basename.split('.')[0]
     vs = VideoStream(filename)
     frame = vs.get_frame_at_sec(sec)
-    frame.image().save(os.path.join(config.FRAMES_DIRECTORY, 'test.png'))
+    frame_location = os.path.join(config.FRAMES_DIRECTORY, sans_ext + '.png')
+    frame.image().save(frame_location)
+    return frame_location
 
 if __name__ == '__main__':
-    metadata = extract(VIDEO_PATH)
+    video_path = 'app/static/media/videos/flame.avi'
+    metadata = extract(video_path)
     print metadata
     print break_time(metadata.get('duration'))
-    print extract_json(VIDEO_PATH, indent=4)
+    print extract_json(video_path, indent=4)
