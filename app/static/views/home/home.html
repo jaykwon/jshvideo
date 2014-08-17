@@ -1,20 +1,26 @@
 <div class="header">
-    <h1 class="oswald">media.</h1>
+    <h1 class="">media.</h1>
+    <hr />
 </div>
-<hr />
 <div>
     <div ng-repeat="video in videos | filter:query">
-        <span class="nine columns alpha omega"><h4>{{ video.title }}</h4></span>
-        <div class="three columns alpha">
-            <img ng-src="{{ video.static_frame }}" class="thumbnail" />
-        </div>
-        <div class="six columns omega">
-            <em>
-                <span class="two columns alpha small">{{ video.duration.raw }}</span>
-                <span class="two columns small">{{ video.width.raw }}x{{ video.height.raw }}</span>
-                <span class="two columns omega small">{{ video.basename }}</span>
-            </em>
-            <span class="nine columns alpha omega">{{ video.text }}</span>
+        <div class="nine columns alpha omega card">
+            <span class="nine columns alpha omega"><h4 class="oswald">{{ video.title }}</h4></span>
+            <div class="three columns alpha">
+            <a ng-href="#/videos/{{ video.link_id }}">
+                <div class="image" data-content="PLAY >">
+                    <img ng-src="{{ video.static_frame }}" class="thumbnail"/>
+                </div>
+            </a>
+            </div>
+            <div class="six columns omega">
+                <em>
+                    <span class="two columns alpha small">{{ video.duration.raw }}</span>
+                    <span class="two columns small">{{ video.width.raw }}x{{ video.height.raw }}</span>
+                    <span class="two columns omega small">{{ video.basename }}</span>
+                </em>
+                <span class="nine columns alpha omega">{{ video.text }}</span>
+            </div>
         </div>
     </div>
 </div>
