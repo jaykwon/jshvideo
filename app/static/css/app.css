@@ -86,3 +86,12 @@ span.fa:hover, span.fa:active, span.fa:visited,
 i.fa:hover, i.fa:active, i.fa:visited {
     color: orange;
 }
+.pull-right {
+    text-align: right;
+}
+.subtitle {
+    font-size: 22px;
+}
+.pull-bottom {
+    vertical-align: text-bottom;
+}
