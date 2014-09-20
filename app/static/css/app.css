@@ -95,3 +95,6 @@ i.fa:hover, i.fa:active, i.fa:visited {
 .pull-bottom {
     vertical-align: text-bottom;
 }
+video {
+    max-width: 640px;
+}

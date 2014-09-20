@@ -37,7 +37,7 @@ app.controller('HomeController', ['$scope', '_', 'videoFactory', function ($scop
 }]);
 
 app.controller('DetailController', ['$scope', '$routeParams', 'videoFactory', function($scope, $routeParams, videoFactory) {
-    $scope.link_id = $routeParams.id;
+    $scope.id = $routeParams.id;
     videoFactory.getVideo($routeParams.id).then(function(video) {
         console.log(video);
         $scope.video = video.data;
@@ -45,7 +45,7 @@ app.controller('DetailController', ['$scope', '$routeParams', 'videoFactory', fu
         console.log("src:", $scope.videoLink, "type:", $scope.video.mime_type.text);
         $scope.videoPlaylist = [
             {
-              src: 'http://video.webmfiles.org/big-buck-bunny_trailer.webm',
+              src: 'media/videos/mnm.webm',
               type: 'video/webm'
             }
         ]
