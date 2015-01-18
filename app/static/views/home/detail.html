@@ -1,41 +1,27 @@
-<div class="back"><a href="#/"><span class="fui-arrow-left"></span> BACK TO LISTING</a></div>
-<video media-player="mediaPlayer" playlist="videoPlaylist"></video>
+<div class="back"><a href="#!/"><span class="fui-arrow-left"></span> BACK TO LISTING</a></div>
+<div class="video-container">
+    <video media-player="mediaPlayer" playlist="videoPlaylist"></video>
+</div>
 
 <div class="player-control">
     <div class="progress" ng-click="mediaPlayer.seek(mediaPlayer.duration * seekPercentage($event))">
-        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: mediaPlayer.currentTime*100/mediaPlayer.duration + '%' }"></div>
-        <div class="time small-font" ng-show="mediaPlayer.formatTime">
-            <span>{{ mediaPlayer.formatTime }}</span><b>/</b><span>{{ mediaPlayer.formatDuration }}</span>
-        </div>
+        <span class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+             ng-style="{ width: mediaPlayer.currentTime*100/mediaPlayer.duration + '%' }"></span>
     </div>
-    <!--<div class="btn" ng-click="mediaPlayer.prev()">
-    <i class="fa fa-step-backward"></i>
-    <span>Prev</span>
-    </div>-->
-    <!-- <div class="btn" ng-click="mediaPlayer.play()">
-    <span>Simple Play</span>
-    <i class="fa fa-play"></i>
-    </div>-->
-    <!--<div class="btn" ng-click="mediaPlayer.next()">
-    <span>Next</span>
-    <i class="fa fa-step-forward"></i>
-    </div>-->
-    <!--<div class="btn btn-noclick">
-    <span>currentTrack: <span class="badge">{{ mediaPlayer.currentTrack }}</span></span>
-    </div>-->
-    <div class="btn" ng-click="mediaPlayer.playPause()">
-        <i class="fa" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
-    </div>
-    <div class="btn btn-noclick">
-        <span><i class="fa fa-clock-o"></i>: <span class="badge">{{ mediaPlayer.formatTime }}</span></span>
-    </div>
-    <div class="btn" ng-click="mediaPlayer.setVolume(mediaPlayer.volume - 0.1)">
+    <span class="btn" ng-click="mediaPlayer.playPause()">
+        <i class="fa biggen" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
+    </span>
+    <span class="time small-font" ng-show="mediaPlayer.formatTime">
+        <span><i class="fa fa-clock-o"></i>: {{ mediaPlayer.formatTime }}</span><b>/</b><span>{{ mediaPlayer.formatDuration }}</span>
+    </span>
+    <span class="btn" ng-click="mediaPlayer.setVolume(mediaPlayer.volume - 0.1)">
         <span><i class="fa fa-volume-down"></i></span>
-    </div>
-    <div class="btn" ng-click="mediaPlayer.setVolume(mediaPlayer.volume + 0.1)">
+    </span>
+    <span class="btn" ng-click="mediaPlayer.setVolume(mediaPlayer.volume + 0.1)">
         <span><i class="fa fa-volume-up"></i></span>
-    </div>
-    <div class="btn btn-noclick">
+    </span>
+    <span class="btn btn-noclick small-font caps">
         <span>volume: <span class="badge">{{ mediaPlayer.volume * 100 | number:0 }}%</span></span>
-    </div>
+    </span>
 </div>
+<div name="disqus_thread" disqus="id"></div>

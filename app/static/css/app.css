@@ -1,3 +1,7 @@
+body {
+    background-image: url(/media/images/tweed.png);
+    background-repeat: repeat;
+}
 .card {
     padding-bottom: 30px;
 }
@@ -20,6 +24,9 @@
 }
 .sub-pop {
     color: #69D2E7;
+}
+.white {
+    color: #111;
 }
 .small-caps a {
     font-size: 12px;
@@ -72,7 +79,10 @@
     opacity:1;
 }
 .small-font {
-    font-size: 8px;
+    font-size: 65%;
+}
+.caps {
+    text-transform: uppercase;
 }
 .back {
     font-size: 12px;
@@ -84,5 +94,36 @@
 }
 span.fa:hover, span.fa:active, span.fa:visited,
 i.fa:hover, i.fa:active, i.fa:visited {
-    color: orange;
+    color: #2ecc71;
+}
+a, a:visited, i, span {
+    color: #eee;
+}
+.video-container {
+    text-align: center;
+}
+video {
+    display: inline-block;
+}
+.biggen {
+    font-size: 200%;
+    padding-right: 2em;
+}
+.fade {
+   opacity: 0.6;
+   transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+
+.fade:hover {
+    opacity: 1;
+}
+.branding {
+    position: absolute;
+    right: 200px;
+    top: 30px;
+    opacity: 0.2;
+    z-index: -1;
+    max-height: 150px;
 }

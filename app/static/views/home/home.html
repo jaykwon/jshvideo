@@ -1,23 +1,24 @@
 <div class="header">
-    <h1 class="">media.</h1>
+    <h1 class="pop">media.</h1>
+    <img class="branding" src="/media/images/mn_invert.png"/>
     <hr />
 </div>
 <div>
     <div ng-repeat="video in videos | filter:query">
         <div class="nine columns alpha omega card">
-            <span class="nine columns alpha omega"><h4 class="oswald">{{ video.title }}</h4></span>
+            <span class="nine columns alpha omega"><h4 class="pop oswald">{{ video.title }}</h4></span>
             <div class="three columns alpha">
-            <a ng-href="#/videos/{{ video.link_id }}">
+            <a ng-href="#!/videos/{{ video.link_id }}">
                 <div class="image" data-content="PLAY >">
                     <img ng-src="{{ video.static_frame }}" class="thumbnail"/>
                 </div>
             </a>
             </div>
-            <div class="six columns omega">
+            <div class="six columns omega sub-pop">
                 <em>
-                    <span class="two columns alpha small">{{ video.duration.raw }}</span>
-                    <span class="two columns small">{{ video.width.raw }}x{{ video.height.raw }}</span>
-                    <span class="two columns omega small">{{ video.basename }}</span>
+                    <span class="two columns alpha small pop">{{ video.duration.raw | limitTo:7 }}</span>
+                    <span class="two columns small pop">{{ video.width.raw }}x{{ video.height.raw }}</span>
+                    <span class="two columns omega small pop">{{ video.basename }}</span>
                 </em>
                 <span class="nine columns alpha omega">{{ video.text }}</span>
             </div>
